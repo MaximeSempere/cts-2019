@@ -7,6 +7,7 @@ import {
   MuiPickersUtilsProvider,
   TimePicker
 } from '@material-ui/pickers';
+import Button from '@material-ui/core/Button';
 
 const DateSelection = () => {
   const { state: { date, stop }, dispatch } = useContext(StopSearchContext);
@@ -14,6 +15,10 @@ const DateSelection = () => {
   const handleChange = date => {
     dispatch({type: 'DateSelection', data: {date: date}});
   };
+
+  const handleReset = () => {
+    dispatch({type: 'DateSelection', data: {date: new Date()}});
+  }
 
   if (stop === null) {
     return <div></div>;
@@ -31,6 +36,9 @@ const DateSelection = () => {
           onChange={handleChange}
         />
       </MuiPickersUtilsProvider>
+      <Button variant="contained" color="primary" onClick={handleReset}>
+        Maintenant
+      </Button>
     </div>
   );
 }
