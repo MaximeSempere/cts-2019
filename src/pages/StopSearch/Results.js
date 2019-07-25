@@ -15,7 +15,7 @@ const DateSelection = () => {
     print: false,
     download: false,
     viewColumns: false,
-    selectableRows: false,
+    selectableRows: 'none',
     rowsPerPage: 100,
     customFooter: (
       count,
