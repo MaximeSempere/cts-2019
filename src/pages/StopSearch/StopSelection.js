@@ -24,6 +24,8 @@ const StopSelection = () => {
     dispatch({type: 'StopSelection', data: {stop: selected.value}});
   };
 
+  const selectStyles = { menu: styles => ({ ...styles, zIndex: 999 }) };
+
   let select = '';
   if (options.length > 0) {
     select =
@@ -33,6 +35,7 @@ const StopSelection = () => {
           value={value}
           onChange={handleChange}
           options={options}
+          styles={selectStyles}
         />
       </div>
   }

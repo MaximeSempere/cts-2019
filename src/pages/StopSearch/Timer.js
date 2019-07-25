@@ -9,14 +9,22 @@ class Timer extends Component {
     this.intervalId = null;
 
     this.state = {
-      visibleDate: moment.utc(this.date.diff(moment())).format("HH:mm:ss")
+      visibleDate: this.calculate()
     };
   }
 
   dateUpdate = () => {
     this.setState({
-      visibleDate: moment.utc(this.date.diff(moment())).format("HH:mm:ss")
+      visibleDate: this.calculate()
     });
+  }
+
+  calculate = () => {
+    let diff = this.date.diff(moment());
+    if (diff < 0) {
+      return this.props.finishedText;
+    }
+    return moment.utc(diff).format("HH:mm:ss");
   }
 
   componentDidUpdate() {

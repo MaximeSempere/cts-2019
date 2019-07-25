@@ -115,6 +115,13 @@ const stopSearchReducer = (state, action) => {
         results: results
       }
 
+      // Action : maxStopArrivalsSelection
+      case 'maxStopArrivalsSelection':
+        return {
+          ...state,
+          maxStopArrivals: action.data.maxStopArrivals
+        }
+
     // Action : default
     default:
       throw new Error();

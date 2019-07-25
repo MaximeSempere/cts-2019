@@ -24,6 +24,8 @@ const LineSelection = () => {
     dispatch({type: 'LineSelection', data: {line: selected.value}});
   };
 
+  const selectStyles = { menu: styles => ({ ...styles, zIndex: 999 }) };
+
   return (
     <div>
       <FormLabel component="legend">Ligne</FormLabel>
@@ -31,6 +33,7 @@ const LineSelection = () => {
         value={value}
         onChange={handleChange}
         options={options}
+        styles={selectStyles}
       />
     </div>
   );

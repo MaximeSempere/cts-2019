@@ -6,7 +6,7 @@ import moment from 'moment';
 
 import Timer from "./Timer";
 
-const DateSelection = () => {
+const Results = () => {
   const { state: { results } } = useContext(StopSearchContext);
 
   const options = {
@@ -35,7 +35,8 @@ const DateSelection = () => {
     "Temps réel",
     "Arrivée",
     "Départ",
-    "Estimation"
+    "Arrivée dans",
+    "Départ dans"
   ];
 
   const data = results.map((result) => {
@@ -46,7 +47,8 @@ const DateSelection = () => {
       result.IsRealTime === true ? "Oui" : "Non",
       moment(result.ExpectedArrivalTime).format('DD/MM/YYYY HH:mm:ss'),
       moment(result.ExpectedDepartureTime).format('DD/MM/YYYY HH:mm:ss'),
-      <Timer date={result.ExpectedArrivalTime} />
+      <Timer date={result.ExpectedArrivalTime} finishedText="Arrivé" />,
+      <Timer date={result.ExpectedDepartureTime} finishedText="Passé" />
       //moment.utc(moment(result.ExpectedArrivalTime).diff(moment())).format("HH:mm:ss")
     ];
 
@@ -59,6 +61,7 @@ const DateSelection = () => {
 
   return (
     <div>
+      <br />
       <MUIDataTable
         title={"Liste des horaires"}
         data={data}
@@ -69,4 +72,4 @@ const DateSelection = () => {
   );
 }
 
-export default DateSelection;
+export default Results;

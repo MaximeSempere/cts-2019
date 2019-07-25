@@ -24,7 +24,6 @@ const DateSelection = () => {
       <FormLabel component="legend">Horaire</FormLabel>
       <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
         <TimePicker
-          margin="normal"
           id="mui-pickers-time"
           ampm={false}
           variant="inline"

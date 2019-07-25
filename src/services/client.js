@@ -16,6 +16,8 @@ const client = (route, params) => (
   }).then((res) => {
     let data = res.data;
     params.dispatch({type: params.type, data: data})
+  }).catch(function (error) {
+    alert(error);
   })
 );
 
