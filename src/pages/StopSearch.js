@@ -8,7 +8,6 @@ import LineSelection from './StopSearch/LineSelection';
 import StopSelection from './StopSearch/StopSelection';
 import DateSelection from './StopSearch/DateSelection';
 import SearchButton from './StopSearch/SearchButton';
-import ResultsNumber from './StopSearch/ResultsNumber';
 import Results from './StopSearch/Results';
 
 import Grid from '@material-ui/core/Grid';
@@ -45,25 +44,26 @@ const StopSearchPage = () => {
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Grid container justify="center" spacing={2}>
-            <Grid key='VehicleModeFilter' item xs={3}>
+            <Grid key='VehicleModeFilter' item xs={6}>
               <VehicleModeFilter />
             </Grid>
-            <Grid key='DateSelection' item xs={3}>
+            <Grid key='DateSelection' item xs={6}>
               <DateSelection />
-            </Grid>
-            <Grid key='ResultsNumber' item xs={3}>
-              <ResultsNumber />
-            </Grid>
-            <Grid key='SearchButton' item xs={3}>
-              <SearchButton />
             </Grid>
           </Grid>
           <Grid container justify="center" spacing={2}>
-            <Grid key='LineSelection' item xs={6}>
+            <Grid key='LineSelection' item xs={12}>
               <LineSelection />
             </Grid>
-            <Grid key='StopSelection' item xs={6}>
+          </Grid>
+          <Grid container justify="center" spacing={2}>
+            <Grid key='LineSelection' item xs={12}>
               <StopSelection />
+            </Grid>
+          </Grid>
+          <Grid container justify="center" spacing={2}>
+            <Grid key='LineSelection' item xs={12} style={{textAlign: "center"}}>
+              <SearchButton />
             </Grid>
           </Grid>
         </Grid>

@@ -26,11 +26,9 @@ const DateSelection = () => {
   }
 
   return (
-    <div>
-      <Button variant="contained" color="primary" onClick={handleChange}>
-        Rechercher
-      </Button>
-    </div>
+    <Button variant="contained" color="primary" onClick={handleChange}>
+      Rechercher
+    </Button>
   );
 }
 

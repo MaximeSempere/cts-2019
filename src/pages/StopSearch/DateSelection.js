@@ -8,6 +8,7 @@ import {
   TimePicker
 } from '@material-ui/pickers';
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const DateSelection = () => {
   const { state: { date, stop }, dispatch } = useContext(StopSearchContext);
@@ -27,18 +28,24 @@ const DateSelection = () => {
   return (
     <div>
       <FormLabel component="legend">Horaire</FormLabel>
-      <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
-        <TimePicker
-          id="mui-pickers-time"
-          ampm={false}
-          variant="inline"
-          value={date}
-          onChange={handleChange}
-        />
-      </MuiPickersUtilsProvider>
-      <Button variant="contained" color="primary" onClick={handleReset}>
-        Maintenant
-      </Button>
+      <Grid container justify="center" spacing={2}>
+        <Grid key='LineSelection' item xs={6}>
+          <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
+            <TimePicker
+              id="mui-pickers-time"
+              ampm={false}
+              variant="inline"
+              value={date}
+              onChange={handleChange}
+            />
+          </MuiPickersUtilsProvider>
+        </Grid>
+        <Grid key='LineSelection' item xs={6}>
+          <Button variant="contained" color="primary" onClick={handleReset}>
+            >
+          </Button>
+        </Grid>
+      </Grid>
     </div>
   );
 }
