@@ -93,6 +93,13 @@ const stopSearchReducer = (state, action) => {
     case 'Search':
       let results = [];
 
+      if (typeof(action.data.ServiceDelivery.StopMonitoringDelivery.MonitoredStopVisit) === 'undefined') {
+        return {
+          ...state,
+          results: results
+        }
+      }
+
       action.data.ServiceDelivery.StopMonitoringDelivery[0].MonitoredStopVisit.map((visit) => {
         let journey = visit.MonitoredVehicleJourney;
         let call = journey.MonitoredCall;
