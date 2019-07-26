@@ -10,6 +10,9 @@ import {
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUndo } from '@fortawesome/free-solid-svg-icons';
+
 const DateSelection = () => {
   const { state: { date, stop }, dispatch } = useContext(StopSearchContext);
 
@@ -29,7 +32,7 @@ const DateSelection = () => {
     <div>
       <FormLabel component="legend">Horaire</FormLabel>
       <Grid container justify="center" spacing={2}>
-        <Grid key='LineSelection' item xs={6}>
+        <Grid key='MuiPickersUtilsProvider' item xs={6}>
           <MuiPickersUtilsProvider utils={DateFnsUtils} locale={locale}>
             <TimePicker
               id="mui-pickers-time"
@@ -40,9 +43,9 @@ const DateSelection = () => {
             />
           </MuiPickersUtilsProvider>
         </Grid>
-        <Grid key='LineSelection' item xs={6}>
+        <Grid key='button' item xs={6}>
           <Button variant="contained" color="primary" onClick={handleReset}>
-            >
+            <FontAwesomeIcon icon={faUndo} />
           </Button>
         </Grid>
       </Grid>
