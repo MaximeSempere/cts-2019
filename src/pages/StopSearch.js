@@ -44,7 +44,7 @@ const StopSearchPage = () => {
     <Paper className={classes.root}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
-          <Grid container justify="center" spacing="2" xs={12}>
+          <Grid container justify="center" spacing={2}>
             <Grid key='VehicleModeFilter' item xs={3}>
               <VehicleModeFilter />
             </Grid>
@@ -58,7 +58,7 @@ const StopSearchPage = () => {
               <SearchButton />
             </Grid>
           </Grid>
-          <Grid container justify="center" spacing="2" xs={12}>
+          <Grid container justify="center" spacing={2}>
             <Grid key='LineSelection' item xs={6}>
               <LineSelection />
             </Grid>
