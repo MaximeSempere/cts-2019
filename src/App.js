@@ -6,7 +6,9 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={StopSearch} />
+      <Route exact path="/:bus/:tram/:line/:stop" component={StopSearch} />
       <Route exact path="/cts-2019/" component={StopSearch} />
+      <Route exact path="/cts-2019/:bus/:tram/:line/:stop" component={StopSearch} />
     </Router>
   );
 }

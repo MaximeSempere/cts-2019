@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { StopSearchContext } from '../../providers/stopSearchProvider';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom'
 
 import stopMonitoring from '../../services/stopMonitoring';
 
-const DateSelection = () => {
-  const { state: { stop, date, line, maxStopArrivals }, dispatch } = useContext(StopSearchContext);
+const SearchButton = ( {history} ) => {
+  const { state: { stop, date, line, maxStopArrivals, VehicleMode, baseUrl }, dispatch } = useContext(StopSearchContext);
+
+  const url = baseUrl+VehicleMode.bus+'/'+VehicleMode.tram+'/'+line+'/'+stop;
 
   const handleChange = () => {
     dispatch({type: 'loading'});
@@ -21,6 +24,7 @@ const DateSelection = () => {
       }
     });
 
+    history.push(url);
   };
 
   if (stop === null) {
@@ -34,4 +38,4 @@ const DateSelection = () => {
   );
 }
 
-export default DateSelection;
+export default withRouter(SearchButton);
