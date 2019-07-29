@@ -1,7 +1,10 @@
+let loading = false;
+
 const stopSearchReducer = (state, action) => {
   switch (action.type) {
     // Action : setLines
     case 'setLines':
+      loading = true;
       let lines = action.data.LinesDelivery.AnnotatedLineRef.map((line) => {
         return {
           LineRef: line.LineRef,
@@ -10,13 +13,19 @@ const stopSearchReducer = (state, action) => {
         }
       });
 
+      if (state.stops.length > 0) {
+        loading = false;
+      }
+
       return {
         ...state,
-        lines: lines
+        lines: lines,
+        loading: loading
       };
 
     // Action : setStops
     case 'setStops':
+      loading = true;
       let stops = [];
       let stopsIds = {};
 
@@ -53,9 +62,14 @@ const stopSearchReducer = (state, action) => {
         return false;
       });
 
+      if (state.lines.length > 0) {
+        loading = false;
+      }
+
       return {
         ...state,
-        stops: stops
+        stops: stops,
+        loading: loading
       };
 
     // Action : VehicleModeFilter
@@ -119,15 +133,23 @@ const stopSearchReducer = (state, action) => {
 
       return {
         ...state,
-        results: results
+        results: results,
+        loading: false
       }
 
-      // Action : maxStopArrivalsSelection
-      case 'maxStopArrivalsSelection':
-        return {
-          ...state,
-          maxStopArrivals: action.data.maxStopArrivals
-        }
+    // Action : maxStopArrivalsSelection
+    case 'maxStopArrivalsSelection':
+      return {
+        ...state,
+        maxStopArrivals: action.data.maxStopArrivals
+      }
+
+    // Action : Loading
+    case 'loading':
+      return {
+        ...state,
+        loading: true
+      }
 
     // Action : default
     default:

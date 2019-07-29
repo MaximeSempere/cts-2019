@@ -9,10 +9,14 @@ import StopSelection from './StopSearch/StopSelection';
 import DateSelection from './StopSearch/DateSelection';
 import SearchButton from './StopSearch/SearchButton';
 import Results from './StopSearch/Results';
+import Loading from './StopSearch/Loading';
+
+import ctsTheme from '../themes/ctsTheme';
 
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,6 +28,8 @@ const StopSearchPage = () => {
   const { dispatch } = useContext(StopSearchContext);
 
   useEffect(() => {
+    dispatch({type: 'loading'});
+
     linesDiscovery({
       dispatch: dispatch,
       type: 'setLines',
@@ -66,6 +72,11 @@ const StopSearchPage = () => {
               <SearchButton />
             </Grid>
           </Grid>
+          <Grid container justify="center" spacing={2}>
+            <Grid key='LineSelection' item xs={12} style={{textAlign: "center"}}>
+              <Loading />
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
 
@@ -86,13 +97,16 @@ const StopSearch = () => {
     stop: null,
     date: new Date(),
     results: [],
-    maxStopArrivals: 5
+    maxStopArrivals: 5,
+    loading: false
   };
 
   return (
-    <StopSearchProvider initialState={StopSearchInitialState}>
-      <StopSearchPage />
-    </StopSearchProvider>
+    <ThemeProvider theme={ctsTheme}>
+      <StopSearchProvider initialState={StopSearchInitialState}>
+        <StopSearchPage />
+      </StopSearchProvider>
+    </ThemeProvider>
   );
 }
 

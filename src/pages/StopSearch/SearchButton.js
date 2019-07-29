@@ -8,6 +8,8 @@ const DateSelection = () => {
   const { state: { stop, date, line, maxStopArrivals }, dispatch } = useContext(StopSearchContext);
 
   const handleChange = () => {
+    dispatch({type: 'loading'});
+
     stopMonitoring({
       dispatch: dispatch,
       type: 'Search',
