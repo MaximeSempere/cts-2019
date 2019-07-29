@@ -7,7 +7,7 @@ import moment from 'moment';
 import Timer from "./Timer";
 
 const Results = () => {
-  const { state: { results } } = useContext(StopSearchContext);
+  const { state: { results, stop } } = useContext(StopSearchContext);
 
   const options = {
     filter: false,
@@ -56,6 +56,9 @@ const Results = () => {
   });
 
   if (results.length === 0) {
+    if (stop != null) {
+      return <div>Pas de résultat.</div>;
+    }
     return <div></div>;
   }
 
