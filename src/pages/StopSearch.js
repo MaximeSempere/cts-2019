@@ -85,39 +85,20 @@ const StopSearchPage = () => {
   );
 }
 
-const StopSearch = ( {match, location} ) => {
-  let VehicleMode = {
-    bus: true,
-    tram: true
-  };
-  let line = null;
-  let stop = null;
-  let baseUrl = '/';
-
-  if (match.path.match(/cts-2019/)) {
-    baseUrl = '/cts-2019/';
-  }
-
-  if (Object.keys(match.params).length > 0) {
-    VehicleMode = {
-      bus: JSON.parse(match.params.bus),
-      tram: JSON.parse(match.params.tram)
-    };
-    line = match.params.line;
-    stop = match.params.stop;
-  }
-
+const StopSearch = () => {
   const StopSearchInitialState = {
     lines: [],
     stops: [],
-    VehicleMode: VehicleMode,
-    line: line,
-    stop: stop,
+    VehicleMode: {
+      bus: true,
+      tram: true
+    },
+    line: null,
+    stop: null,
     date: new Date(),
     results: [],
     maxStopArrivals: 5,
-    loading: false,
-    baseUrl: baseUrl
+    loading: false
   };
 
   return (
