@@ -151,6 +151,25 @@ const stopSearchReducer = (state, action) => {
         loading: true
       }
 
+    case 'routeParams':
+      console.log(action.data.match)
+
+      if (action.data.match.path === '/:bus/:tram/:line/:stop') {
+        return {
+          ...state,
+          VehicleMode: {
+            bus: JSON.parse(action.data.match.params.bus),
+            tram: JSON.parse(action.data.match.params.tram)
+          },
+          line: action.data.match.params.line,
+          stop: action.data.match.params.stop
+        }
+      } else {
+        return {
+          ...state
+        }
+      }
+
     // Action : default
     default:
       throw new Error();
