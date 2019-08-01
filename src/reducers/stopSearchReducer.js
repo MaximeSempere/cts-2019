@@ -151,6 +151,34 @@ const stopSearchReducer = (state, action) => {
         loading: true
       }
 
+    // Action routeParams : load's parameters from route
+    case 'routeParams':
+      if (action.data.match.params.stop !== undefined) {
+        return {
+          ...state,
+          VehicleMode: {
+            bus: JSON.parse(action.data.match.params.bus),
+            tram: JSON.parse(action.data.match.params.tram)
+          },
+          line: action.data.match.params.line,
+          stop: action.data.match.params.stop
+        }
+      } else {
+        return {
+          ...state
+        }
+      }
+
+    // loadResult : Load results from route parameters
+    case 'loadResult':
+        if (action.data.match.params.stop !== undefined) {
+          action.data.load(action.data.match.params.stop, action.data.match.params.line, state.date, state.maxStopArrivals);
+        }
+
+        return {
+          ...state
+        }
+
     // Action : default
     default:
       throw new Error();

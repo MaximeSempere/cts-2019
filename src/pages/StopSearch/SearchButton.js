@@ -1,26 +1,15 @@
 import React, { useContext } from 'react';
 import { StopSearchContext } from '../../providers/stopSearchProvider';
 import Button from '@material-ui/core/Button';
+import { withRouter } from 'react-router-dom';
 
-import stopMonitoring from '../../services/stopMonitoring';
-
-const DateSelection = () => {
-  const { state: { stop, date, line, maxStopArrivals }, dispatch } = useContext(StopSearchContext);
+const DateSelection = ( {history} ) => {
+  const { state: { stop, line, VehicleMode }, dispatch } = useContext(StopSearchContext);
 
   const handleChange = () => {
     dispatch({type: 'loading'});
 
-    stopMonitoring({
-      dispatch: dispatch,
-      type: 'Search',
-      params: {
-        MonitoringRef: stop,
-        LineRef: line,
-        StartTime: date,
-        MaximumStopVisits: maxStopArrivals
-      }
-    });
-
+    history.push('/'+VehicleMode.bus+'/'+VehicleMode.tram+'/'+line+'/'+stop);
   };
 
   if (stop === null) {
@@ -34,4 +23,4 @@ const DateSelection = () => {
   );
 }
 
-export default DateSelection;
+export default withRouter(DateSelection);
