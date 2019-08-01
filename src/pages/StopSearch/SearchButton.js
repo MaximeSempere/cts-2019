@@ -4,12 +4,12 @@ import Button from '@material-ui/core/Button';
 import { withRouter } from 'react-router-dom';
 
 const DateSelection = ( {history} ) => {
-  const { state: { stop, line, VehicleMode, path }, dispatch } = useContext(StopSearchContext);
+  const { state: { stop, line, VehicleMode }, dispatch } = useContext(StopSearchContext);
 
   const handleChange = () => {
     dispatch({type: 'loading'});
 
-    history.push(path+VehicleMode.bus+'/'+VehicleMode.tram+'/'+line+'/'+stop);
+    history.push('/'+VehicleMode.bus+'/'+VehicleMode.tram+'/'+line+'/'+stop);
   };
 
   if (stop === null) {
