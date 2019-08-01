@@ -3,12 +3,11 @@ import { StopSearchContext } from '../../providers/stopSearchProvider';
 import MUIDataTable from "mui-datatables";
 import TableFooter from "@material-ui/core/TableFooter";
 import moment from 'moment';
-import { withRouter } from 'react-router-dom';
 
 import Timer from "./Timer";
 
-const Results = ( { history } ) => {
-  const { state: { results, stop, VehicleMode, line } } = useContext(StopSearchContext);
+const Results = () => {
+  const { state: { results, stop } } = useContext(StopSearchContext);
 
   const options = {
     filter: false,
@@ -63,8 +62,6 @@ const Results = ( { history } ) => {
     return <div></div>;
   }
 
-  history.push('/'+VehicleMode.bus+'/'+VehicleMode.tram+'/'+line+'/'+stop);
-
   return (
     <div>
       <br />
@@ -78,4 +75,4 @@ const Results = ( { history } ) => {
   );
 }
 
-export default withRouter(Results);
+export default Results;

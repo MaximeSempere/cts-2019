@@ -151,10 +151,9 @@ const stopSearchReducer = (state, action) => {
         loading: true
       }
 
+    // Action routeParams : load's parameters from route
     case 'routeParams':
-      console.log(action.data.match)
-
-      if (action.data.match.path === '/:bus/:tram/:line/:stop') {
+      if (action.data.match.params.stop !== undefined) {
         return {
           ...state,
           VehicleMode: {
@@ -169,6 +168,16 @@ const stopSearchReducer = (state, action) => {
           ...state
         }
       }
+
+    // loadResult : Load results from route parameters
+    case 'loadResult':
+        if (action.data.match.params.stop !== undefined) {
+          action.data.load(action.data.match.params.stop, action.data.match.params.line, state.date, state.maxStopArrivals);
+        }
+
+        return {
+          ...state
+        }
 
     // Action : default
     default:

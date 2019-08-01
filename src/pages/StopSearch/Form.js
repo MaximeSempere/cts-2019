@@ -15,6 +15,8 @@ import { withRouter } from 'react-router-dom';
 
 import { StopSearchContext } from '../../providers/stopSearchProvider';
 
+import stopMonitoring from '../../services/stopMonitoring';
+
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3, 2),
@@ -27,6 +29,22 @@ const Form = ( {match} ) => {
 
   useEffect(() => {
     dispatch({type: 'routeParams', data: {match: match}});
+
+    dispatch({type: 'loadResult', data: {
+      match: match,
+      load: (stop, line, date, maxStopArrivals) => {
+        stopMonitoring({
+          dispatch: dispatch,
+          type: 'Search',
+          params: {
+            MonitoringRef: stop,
+            LineRef: line,
+            StartTime: date,
+            MaximumStopVisits: maxStopArrivals
+          }
+        });
+      }
+    }});
   }, [dispatch, match]);
 
   return (
