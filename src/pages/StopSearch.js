@@ -46,7 +46,8 @@ const StopSearch = () => {
     date: new Date(),
     results: [],
     maxStopArrivals: 5,
-    loading: false
+    loading: false,
+    path: window.location.hostname === 'localhost' ? '/' : '/cts-2019/'
   };
 
   return (

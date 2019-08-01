@@ -3,11 +3,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import StopSearch from './pages/StopSearch';
 
 function App() {
+  let path = '';
+  if (window.location.hostname === 'localhost') {
+    path = '/:bus?/:tram?/:line?/:stop?';
+  } else {
+    path = '/cts-2019/:bus?/:tram?/:line?/:stop?';
+  }
+
   return (
     <Router>
-      {/*<Route exact path="/" component={StopSearch} />*/}
-      <Route exact path="/:bus?/:tram?/:line?/:stop?" component={StopSearch} />
-      <Route exact path="/cts-2019/" component={StopSearch} />
+      <Route exact path={path} component={StopSearch} />
     </Router>
   );
 }
