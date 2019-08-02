@@ -5,7 +5,7 @@ import MakeLinesFile from './pages/MakeLinesFile';
 
 function App() {
   return (
-    <Router basename={process.env.PUBLIC_URL}>
+    <Router>
       <Switch>
         <Route exact path='/admin/lines' component={MakeLinesFile} />
         <Route exact path='/:bus?/:tram?/:line?/:stop?' component={StopSearch} />
