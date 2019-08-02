@@ -16,6 +16,7 @@
     "gh-pages": "^2.0.1",
     "moment": "^2.24.0",
     "mui-datatables": "^2.6.3",
+    "query-string": "^6.8.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router": "^5.0.1",
