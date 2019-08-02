@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import Paper from '@material-ui/core/Paper';
-import { FormLabel } from '@material-ui/core';
 
 import { StopSearchContext } from '../../providers/stopSearchProvider';
+import Download from './Download';
 
 const Stops = () => {
   const { state: { stops } } = useContext(StopSearchContext);
@@ -10,10 +9,7 @@ const Stops = () => {
   const json = JSON.stringify(stops);
 
   return (
-    <Paper>
-      <FormLabel component="legend">Stops</FormLabel>
-      <p>{json}</p>
-    </Paper>
+    <Download label="Stops" json={json} filename="stops.json" />
   );
 }
 

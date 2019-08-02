@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import Paper from '@material-ui/core/Paper';
-import { FormLabel } from '@material-ui/core';
 
 import { StopSearchContext } from '../../providers/stopSearchProvider';
+import Download from './Download';
 
 const Lines = () => {
   const { state: { lines } } = useContext(StopSearchContext);
@@ -10,10 +9,7 @@ const Lines = () => {
   const json = JSON.stringify(lines);
 
   return (
-    <Paper>
-      <FormLabel component="legend">Lignes</FormLabel>
-      <p>{json}</p>
-    </Paper>
+    <Download label="lignes" json={json} filename="lignes.json" />
   );
 }
 
