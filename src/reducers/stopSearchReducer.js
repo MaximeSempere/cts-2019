@@ -171,13 +171,35 @@ const stopSearchReducer = (state, action) => {
 
     // loadResult : Load results from route parameters
     case 'loadResult':
-        if (action.data.match.params.stop !== undefined) {
-          action.data.load(action.data.match.params.stop, action.data.match.params.line, state.date, state.maxStopArrivals);
-        }
+      if (action.data.match.params.stop !== undefined) {
+        action.data.load(action.data.match.params.stop, action.data.match.params.line, state.date, state.maxStopArrivals);
+      }
 
-        return {
-          ...state
-        }
+      return {
+        ...state
+      }
+
+    case 'setLinesFromCache':
+      if (state.stops.length > 0) {
+        loading = false;
+      }
+
+      return {
+        ...state,
+        lines: action.data,
+        loading: loading
+      }
+
+    case 'setStopsFromCache':
+      if (state.lines.length > 0) {
+        loading = false;
+      }
+
+      return {
+        ...state,
+        stops: action.data,
+        loading: loading
+      }
 
     // Action : default
     default:

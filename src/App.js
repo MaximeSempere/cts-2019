@@ -7,7 +7,7 @@ function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        <Route exact path='/admin/cache' component={MakeLinesFile} />
+        <Route exact path='/admin/lines' component={MakeLinesFile} />
         <Route exact path='/:bus?/:tram?/:line?/:stop?' component={StopSearch} />
       </Switch>
     </Router>

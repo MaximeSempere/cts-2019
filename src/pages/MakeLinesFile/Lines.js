@@ -9,7 +9,7 @@ const Lines = () => {
   const json = JSON.stringify(lines);
 
   return (
-    <Download label="lignes" json={json} filename="lignes.json" />
+    <Download label="lignes" json={json} filename="lines.json" />
   );
 }
 
